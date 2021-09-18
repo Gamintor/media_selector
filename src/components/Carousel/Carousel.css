@@ -1,0 +1,18 @@
+.carouselItem {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    object-fit: fill;
+    margin-bottom: -20px;
+}
+
+.carouselItem_text {
+    font-size: 1.1rem;
+    word-wrap: break-word;
+}
+
+.carouselItem_img {
+    border-radius: 10px;
+    box-shadow: 0 0 6px #042eaf;
+    object-fit: fill;
+}
