@@ -4,13 +4,6 @@ import { img_300, unavailable } from "../../config/config";
 import ContentModal from "../ContentModal/ContentModal";
 import "./SingleContent.css";
 import { ThemeProvider } from "@material-ui/styles";
-import { red } from "@material-ui/core/colors";
-
-const determineColor = rating => {
-    if (rating >= 7.5) {
-        return "primary";
-    }
-};
 
 const myTheme = createTheme({
     palette: {
@@ -20,10 +13,6 @@ const myTheme = createTheme({
         },
         secondary: {
             main: "#ef6c00",
-            contrastText: "#fff",
-        },
-        tertiary: {
-            main: "#d32f2f",
             contrastText: "#fff",
         },
     },
