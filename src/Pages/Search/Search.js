@@ -44,19 +44,11 @@ const Search = () => {
             const { data } = await axios.get(`https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`);
             setContent(data.results);
             setNumOfPages(data.total_pages);
+            setNoSearchResults(data.results.length < 1);
         } catch (error) {
             console.error(error);
+            console.log("Enter a search text!");
         }
-    };
-
-    const buttonClick = () => {
-        fetchSearch().then(() => {
-            if (searchText && content.length < 1) {
-                setNoSearchResults(true);
-            } else {
-                setNoSearchResults(false);
-            }
-        });
     };
 
     useEffect(() => {
@@ -70,7 +62,7 @@ const Search = () => {
             <ThemeProvider theme={myTheme}>
                 <div style={{ display: "flex", margin: "25px 0" }}>
                     <TextField className="textBox" label="Search" variant="outlined" style={{ flex: 1 }} color="secondary" onChange={e => setSearchText(e.target.value)} />
-                    <Button variant="contained" style={{ marginLeft: "10px" }} size="large" onClick={buttonClick}>
+                    <Button variant="contained" style={{ marginLeft: "10px" }} size="large" onClick={fetchSearch}>
                         <SearchIcon color="secondary" fontSize="large" />
                     </Button>
                 </div>
